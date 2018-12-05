@@ -33,3 +33,6 @@ RUN INSTALL_PKGS="rh-nodejs${NODEJS_VERSION} rh-nodejs${NODEJS_VERSION}-npm rh-n
     rm -rf /var/cache/yum
 
 USER 1001
+
+RUN git config --global user.email "jenkins@labs.training.com" && \
+    git config --global user.name "Jenkins Donal's Slave"
