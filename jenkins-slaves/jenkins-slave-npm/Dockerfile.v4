@@ -1,5 +1,5 @@
 #FROM registry.redhat.io/openshift4/ose-jenkins-agent-nodejs:4.1
-FROM quay.io/openshift/origin-jenkins-agent-base:4.1
+FROM quay.io/openshift/origin-jenkins-agent-nodejs:4.1
 
 
 ENV CHROME_BIN=/bin/google-chrome
