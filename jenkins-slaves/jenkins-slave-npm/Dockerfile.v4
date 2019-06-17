@@ -1,4 +1,5 @@
-FROM registry.redhat.io/openshift4/ose-jenkins-agent-nodejs:4.1
+#FROM registry.redhat.io/openshift4/ose-jenkins-agent-nodejs:4.1
+FROM quay.io/openshift/origin-jenkins-agent-base:4.1
 
 
 ENV CHROME_BIN=/bin/google-chrome
@@ -8,12 +9,7 @@ USER root
 ADD src/google-chrome.repo /etc/yum.repos.d/
 
 RUN INSTALL_PKGS="nss_wrapper redhat-lsb libXScrnSaver xdg-utils google-chrome-stable" && \
-    yum install -y --setopt=tsflags=nodocs \
-      --disablerepo=* \
-      --enablerepo=rhel-7-server-rpms \
-      --enablerepo=rhel-7-server-optional-rpms \
-      --enablerepo=google-chrome \
-    $INSTALL_PKGS && \
+    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rm -rf /var/cache/yum && \
     npm install --unsafe-perm -g npm-audit-html npm-audit-ci-wrapper sonar-scanner && \
     chown root:root /home/jenkins -R && \
