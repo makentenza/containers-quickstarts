@@ -9,7 +9,7 @@ USER root
 ADD src/google-chrome.repo /etc/yum.repos.d/
 
 RUN INSTALL_PKGS="nss_wrapper libXScrnSaver xdg-utils google-chrome-stable" && \
-    yum install --disablerepo=rhel-fast-datapath --disablerepo=rhel-server -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    yum install --disablerepo=rhel-fast-datapath --disablerepo=rhel-server --disable rhel-server-extras -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     npm install --unsafe-perm -g npm-audit-html npm-audit-ci-wrapper sonar-scanner && \
     chown root:root /home/jenkins -R && \
     chmod 775 /home/jenkins/.config -R && \
